@@ -59,10 +59,13 @@ const crearCalculadora = () => {
           }
           break;
         case ',':
-
-        break;
+          ventana.value = ventana.value.includes(',') ? ventana.value : ventana.value + ',';
+          break;
         case '=':
-
+          if (ventana.value != '0') {
+            ventana.value = eval(ventana.value.replace('x', '*').replace('÷', '/').replace(',', '.'));
+            ventana.value = ventana.value.replace('.', ',');
+          }
           break;
         case '±':
           ventana.value = ventana.value != '0' ? (ventana.value.includes('-') ? ventana.value.slice(1) : '-' + ventana.value) : ventana.value;
